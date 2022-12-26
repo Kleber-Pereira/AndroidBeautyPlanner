@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "152198357674",
+    "project_id": "beautyplannerandroid",
+    "storage_bucket": "beautyplannerandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152198357674:android:c552d782b4fad7900766d3",
+        "android_client_info": {
+          "package_name": "com.kleber.beautyplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152198357674-kmof1k5n6d26l2jpm155hhv9fvva40o7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb46Jhe0dPkQMKadG7brt6l3OIhxhr_F4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152198357674-kmof1k5n6d26l2jpm155hhv9fvva40o7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
