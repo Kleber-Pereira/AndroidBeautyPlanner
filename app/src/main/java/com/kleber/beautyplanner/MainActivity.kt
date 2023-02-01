@@ -5,11 +5,17 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_BeautyPlanner)
         setContentView(R.layout.activity_main)
+
+
+
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -20,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.menu_home -> {
+
                 println("Home clicado")
                 true
             }
