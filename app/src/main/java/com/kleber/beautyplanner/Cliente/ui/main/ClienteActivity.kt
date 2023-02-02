@@ -1,17 +1,20 @@
 package com.kleber.beautyplanner.Cliente.ui.main
 
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.EditText
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.DatabaseReference
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import com.kleber.beautyplanner.R
 import com.google.firebase.FirebaseApp
+import com.google.firebase.database.*
 import com.kleber.beautyplanner.Cliente.Cliente
+
 import java.util.*
 
 class ClienteActivity : AppCompatActivity() {
@@ -21,8 +24,15 @@ class ClienteActivity : AppCompatActivity() {
     var edtEndereco: EditText? = null
     var edtCidade: EditText? = null
     var edtBairro: EditText? = null
+    var listV_dados: ListView? = null
     var firebaseDatabase: FirebaseDatabase? = null
     var databaseReference: DatabaseReference? = null
+
+    private val listCliente: MutableList<Cliente?> = ArrayList()
+    private var arrayAdapterCliente: ArrayAdapter<Cliente?>? = null
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cliente)
@@ -32,13 +42,34 @@ class ClienteActivity : AppCompatActivity() {
         edtEndereco = findViewById<View>(R.id.editEndereco) as EditText
         edtCidade = findViewById<View>(R.id.editCidade) as EditText
         edtBairro = findViewById<View>(R.id.editBairro) as EditText
+        listV_dados = findViewById<View>(R.id.listV_dados) as ListView
         inicializarFirebase()
+        eventoDatabase()
+    }
+
+    private fun eventoDatabase() {
+        databaseReference!!.child("Cliente").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                listCliente.clear()
+                for (objSnapshot in dataSnapshot.children) {
+                    val p = objSnapshot.getValue(Cliente::class.java)
+                    listCliente.add(p)
+                }
+                arrayAdapterCliente =
+                    ArrayAdapter(this@ClienteActivity, android.R.layout.simple_list_item_1, listCliente)
+                listV_dados!!.setAdapter(arrayAdapterCliente)
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+        firebaseDatabase!!.setPersistenceEnabled(true)
     }
 
     private fun inicializarFirebase() {
         FirebaseApp.initializeApp(this@ClienteActivity)
         firebaseDatabase = FirebaseDatabase.getInstance()
         databaseReference = firebaseDatabase!!.reference
+        firebaseDatabase!!.setPersistenceEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
