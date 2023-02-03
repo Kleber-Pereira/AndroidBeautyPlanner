@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.kleber.beautyplanner.R
@@ -31,6 +32,8 @@ class ClienteActivity : AppCompatActivity() {
     private val listCliente: MutableList<Cliente?> = ArrayList()
     private var arrayAdapterCliente: ArrayAdapter<Cliente?>? = null
 
+    var clienteSelecionado: Cliente? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,9 +48,21 @@ class ClienteActivity : AppCompatActivity() {
         listV_dados = findViewById<View>(R.id.listV_dados) as ListView
         inicializarFirebase()
         eventoDatabase()
+
+        listV_dados!!.setOnClickListener(AdapterView.OnItemClickListener { adapterView, view, i, l ->
+            clienteSelecionado = adapterView.getItemAtPosition(i) as Cliente
+            edtNome!!.setText(clienteSelecionado!!.nome)
+        })
+
+
+
     }
 
-    private fun eventoDatabase() {
+private fun ListView.setOnClickListener(onItemClickListener: AdapterView.OnItemClickListener) {
+
+}
+
+private fun eventoDatabase() {
         databaseReference!!.child("Cliente").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 listCliente.clear()
@@ -87,7 +102,24 @@ class ClienteActivity : AppCompatActivity() {
             p.endereco = edtEndereco!!.text.toString()
             p.cidade = edtCidade!!.text.toString()
             p.bairro = edtBairro!!.text.toString()
-            databaseReference!!.child("Cliente").child(p.email!!).setValue(p)
+            databaseReference!!.child("Cliente").child(p.uid!!).setValue(p)
+            limparCampos()
+        }
+        else if (id == R.id.menu_edit_cliente) {
+            val p = Cliente()
+            p.uid = clienteSelecionado!!.uid.toString()
+            p.nome = edtNome!!.text.toString().trim()
+            p.email = edtEmail!!.text.toString().trim()
+            p.endereco = edtEndereco!!.text.toString().trim()
+            p.cidade = edtCidade!!.text.toString().trim()
+            p.bairro = edtBairro!!.text.toString().trim()
+            databaseReference!!.child("Cliente").child(p.uid!!).setValue(p)
+            limparCampos()
+        }
+        else if (id == R.id.menu_delete_cliente) {
+            val p = Cliente()
+            p.uid = clienteSelecionado!!.uid.toString()
+            databaseReference!!.child("Cliente").child(p.uid!!).removeValue()
             limparCampos()
         }
         return true
