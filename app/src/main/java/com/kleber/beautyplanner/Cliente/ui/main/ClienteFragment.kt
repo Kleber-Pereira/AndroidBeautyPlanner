@@ -15,17 +15,17 @@ class ClienteFragment : Fragment() {
         fun newInstance() = ClienteFragment()
     }
 
-    private lateinit var viewModel: ClienteViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ClienteViewModel::class.java)
+
         // TODO: Use the ViewModel
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_cliente, container, false)
+        return inflater.inflate(R.layout.fragment_cliente,container, false)
     }
 
 }

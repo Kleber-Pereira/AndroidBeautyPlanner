@@ -4,27 +4,48 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.kleber.beautyplanner.Cliente.ui.main.ClienteFragment
+import com.kleber.beautyplanner.Home.HomeFragment
+import com.kleber.beautyplanner.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var currentFragment : Fragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_BeautyPlanner)
         setContentView(R.layout.activity_main)
 
-
-
-
+        supportFragmentManager.beginTransaction().replace(R.id.frame_layout,HomeFragment()).commit()
+        val bottomNav : BottomNavigationView=findViewById(R.id.main_menu)
+        bottomNav.setOnNavigationItemSelectedListener(navListener)
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    val navListener = BottomNavigationView.OnNavigationItemSelectedListener {
+        when (it.itemId) {
+            R.id.menu_home -> {
+                currentFragment = HomeFragment()
+            }
+
+            R.id.menu_cliente -> {
+                currentFragment = ClienteFragment()
+            }
+        }
+        supportFragmentManager.beginTransaction().replace(R.id.frame_layout,currentFragment).commit()
+        true
+    }
+
+    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId){
+        when (it.itemId){
             R.id.menu_home -> {
 
                 println("Home clicado")
@@ -43,17 +64,28 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.menu_cliente -> {
-                println("Clientes clicado")
+                replaceFragment(ClienteFragment())
                 true
             }
             else ->{
                 return super.onOptionsItemSelected(item)
-            }
+                true
+            }*/
+
         }
 
-    }
+
+/*
+    private fun replaceFragment(fragment: Fragment){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.main_menu,fragment)
+        fragmentTransaction.commit()
+
+
+    }*/
 
 
 
-}
+
 

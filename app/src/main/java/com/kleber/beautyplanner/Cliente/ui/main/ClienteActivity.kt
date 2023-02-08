@@ -38,7 +38,7 @@ class ClienteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cliente)
+        setContentView(R.layout.fragment_cliente)
         edtNome = findViewById<View>(R.id.editNome) as EditText
         edtEmail = findViewById<View>(R.id.editEmail) as EditText
         edtTelefone = findViewById<View>(R.id.editTelefone) as EditText
@@ -88,7 +88,7 @@ private fun eventoDatabase() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_cliente, menu)
+        menuInflater.inflate(R.menu.menu_clientes, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
