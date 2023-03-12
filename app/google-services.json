@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "152198357674",
+    "firebase_url": "https://beautyplannerandroid-default-rtdb.firebaseio.com",
     "project_id": "beautyplannerandroid",
     "storage_bucket": "beautyplannerandroid.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "152198357674-m51vd6tgek3viani3m9ccshs0i79n3qo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kleber.beautyplanner",
+            "certificate_hash": "207124cedf9e582cf94ec06663f4e6ab51db01b5"
+          }
+        },
         {
           "client_id": "152198357674-kmof1k5n6d26l2jpm155hhv9fvva40o7.apps.googleusercontent.com",
           "client_type": 3

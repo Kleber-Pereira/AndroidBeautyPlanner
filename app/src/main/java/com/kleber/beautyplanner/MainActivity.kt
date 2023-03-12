@@ -2,13 +2,14 @@ package com.kleber.beautyplanner
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.kleber.beautyplanner.Cliente.ui.main.ClienteFragment
+import com.kleber.beautyplanner.Agenda.AgendaFragment
+import com.kleber.beautyplanner.Cliente.ClienteFragment
+
+import com.kleber.beautyplanner.Funcionarios.FuncionariosFragment
 import com.kleber.beautyplanner.Home.HomeFragment
-import com.kleber.beautyplanner.databinding.ActivityMainBinding
+import com.kleber.beautyplanner.Servicos.ServicosFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +30,15 @@ class MainActivity : AppCompatActivity() {
         when (it.itemId) {
             R.id.menu_home -> {
                 currentFragment = HomeFragment()
+            }
+            R.id.menu_Servicos -> {
+                currentFragment = ServicosFragment()
+            }
+            R.id.menu_Funcionario -> {
+                currentFragment = FuncionariosFragment()
+            }
+            R.id.menu_Agenda-> {
+                currentFragment = AgendaFragment()
             }
 
             R.id.menu_cliente -> {

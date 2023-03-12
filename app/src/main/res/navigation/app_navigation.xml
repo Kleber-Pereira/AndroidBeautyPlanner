@@ -15,8 +15,4 @@
         android:name="com.kleber.beautyplanner.Home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/clienteFragment"
-        android:name="com.kleber.beautyplanner.Cliente.ui.main.ClienteFragment"
-        android:label="ClienteFragment" />
 </navigation>
