@@ -22,14 +22,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Cliente.BuscarActivity"
+            android:name=".Cliente.ClienteBuscarActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Cliente.InserirActivity"
+            android:name=".Cliente.ClienteInserirActivity"
             android:exported="false"
             android:label="@string/title_activity_inserir"
             android:theme="@style/Theme.Splash.NoActionBar">
@@ -44,6 +44,41 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+
+        <activity
+            android:name=".Funcionarios.FuncionarioDetailsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Funcionarios.FuncionarioBuscarActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Funcionarios.FuncionarioInserirActivity"
+            android:exported="false"
+            android:label="@string/title_activity_inserir"
+            android:theme="@style/Theme.Splash.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Funcionarios.FuncionarioActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -7,7 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kleber.beautyplanner.Agenda.AgendaFragment
 import com.kleber.beautyplanner.Cliente.ClienteFragment
 
-import com.kleber.beautyplanner.Funcionarios.FuncionariosFragment
+import com.kleber.beautyplanner.Funcionarios.FuncionarioFragment
 import com.kleber.beautyplanner.Home.HomeFragment
 import com.kleber.beautyplanner.Servicos.ServicosFragment
 
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 currentFragment = ServicosFragment()
             }
             R.id.menu_Funcionario -> {
-                currentFragment = FuncionariosFragment()
+                currentFragment = FuncionarioFragment()
             }
             R.id.menu_Agenda-> {
                 currentFragment = AgendaFragment()
