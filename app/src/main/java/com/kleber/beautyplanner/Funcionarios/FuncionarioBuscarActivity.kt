@@ -55,11 +55,17 @@ class FuncionarioBuscarActivity : AppCompatActivity() {
                             //put extras
                             intent.putExtra("funcionarioId", funcionarioList[position].funcionarioId)
                             intent.putExtra("funcionarioNome", funcionarioList[position].vfuncionarioNome)
-                            intent.putExtra("funcionarioEmail", funcionarioList[position].vfuncionarioEmail)
-                            intent.putExtra("funcionarioTelefone", funcionarioList[position].vfuncionarioTelefone)
+                            intent.putExtra("funcionarioSobrenome", funcionarioList[position].vfuncionarioSobrenome)
+                            intent.putExtra("funcionarioCPF", funcionarioList[position].vfuncionarioCPF)
+                            intent.putExtra("funcionarioNasc", funcionarioList[position].vfuncionarioNasc)
                             intent.putExtra("funcionarioEndereco", funcionarioList[position].vfuncionarioEndereco)
                             intent.putExtra("funcionarioCidade", funcionarioList[position].vfuncionarioCidade)
                             intent.putExtra("funcionarioEstado", funcionarioList[position].vfuncionarioEstado)
+                            intent.putExtra("funcionarioEmail", funcionarioList[position].vfuncionarioEmail)
+                            intent.putExtra("funcionarioFuncao", funcionarioList[position].vfuncionarioFuncao)
+                            intent.putExtra("funcionarioDtAd", funcionarioList[position].vfuncionarioDtAd)
+                            intent.putExtra("funcionarioStatus", funcionarioList[position].vfuncionarioStatus)
+
                             startActivity(intent)
 
                         }

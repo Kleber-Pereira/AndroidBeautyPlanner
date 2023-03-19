@@ -11,11 +11,14 @@ import com.kleber.beautyplanner.R
 
 class ClienteInserirActivity : AppCompatActivity() {
     private lateinit var clienteNome: EditText
-    private lateinit var clienteEmail: EditText
+    private lateinit var clienteSobrenome: EditText
+    private lateinit var clienteCPF: EditText
+    private lateinit var clienteNasc: EditText
     private lateinit var clienteEndereco: EditText
     private lateinit var clienteCidade: EditText
     private lateinit var clienteEstado: EditText
     private lateinit var clienteTelefone: EditText
+    private lateinit var clienteEmail: EditText
     private lateinit var btnSalvarCliente: Button
 
     private lateinit var dbRef: DatabaseReference
@@ -25,11 +28,14 @@ class ClienteInserirActivity : AppCompatActivity() {
         setContentView(R.layout.activity_inserir_cliente)
 
         clienteNome = findViewById(R.id.clienteNome)
-        clienteEmail = findViewById(R.id.clienteEmail)
+        clienteSobrenome = findViewById(R.id.clienteSobrenome)
+        clienteCPF = findViewById(R.id.clienteCPF)
+        clienteNasc = findViewById(R.id.clienteNasc)
         clienteEndereco = findViewById(R.id.clienteEndereco)
         clienteCidade = findViewById(R.id.clienteCidade)
         clienteEstado = findViewById(R.id.clienteEstado)
         clienteTelefone = findViewById(R.id.clienteTelefone)
+        clienteEmail = findViewById(R.id.clienteEmail)
         btnSalvarCliente = findViewById(R.id.btnSalvarCliente)
 
         dbRef = FirebaseDatabase.getInstance().getReference("Clientes")
@@ -44,17 +50,27 @@ class ClienteInserirActivity : AppCompatActivity() {
 
         //getting values
         val vclienteNome = clienteNome.text.toString()
-        val vclienteEmail = clienteEmail.text.toString()
+        val vclienteSobrenome = clienteSobrenome.text.toString()
+        val vclienteCPF = clienteCPF.text.toString()
+        val vclienteNasc = clienteNasc.text.toString()
         val vclienteEndereco = clienteEndereco.text.toString()
         val vclienteCidade = clienteCidade.text.toString()
         val vclienteEstado = clienteEstado.text.toString()
         val vclienteTelefone = clienteTelefone.text.toString()
+        val vclienteEmail = clienteEmail.text.toString()
+
 
         if (vclienteNome.isEmpty()) {
             clienteNome.error = "Inserir Nome"
         }
+        else if (vclienteSobrenome.isEmpty()) {
+            clienteSobrenome.error = "Inserir Sobrenome"
+        }
+        else if (vclienteCPF.isEmpty()) {
+            clienteCPF.error = "Inserir CPF"
+        }
         else if (vclienteEmail.isEmpty()) {
-            clienteEmail.error = "Inserir E-mail"
+            clienteNasc.error = "Inserir Data de Nascimento"
         }
         else if (vclienteEndereco.isEmpty()) {
             clienteEndereco.error = "Inserir Endereço"
@@ -68,6 +84,9 @@ class ClienteInserirActivity : AppCompatActivity() {
         else if (vclienteTelefone.isEmpty()) {
             clienteTelefone.error = "Inserir Telefone"
         }
+        else if (vclienteEmail.isEmpty()) {
+            clienteEmail.error = "Inserir E-mail"
+        }
 
         else {
             val clienteId = dbRef.push().key!!
@@ -75,11 +94,14 @@ class ClienteInserirActivity : AppCompatActivity() {
             val cliente = ClienteModel(
                 clienteId,
                 vclienteNome,
-                vclienteEmail,
+                vclienteSobrenome,
+                vclienteCPF,
+                vclienteNasc,
                 vclienteEndereco,
                 vclienteCidade,
                 vclienteEstado,
-                vclienteTelefone
+                vclienteTelefone,
+                vclienteEmail
             )
 
             dbRef.child(clienteId).setValue(cliente)
@@ -87,11 +109,14 @@ class ClienteInserirActivity : AppCompatActivity() {
                     Toast.makeText(this, "Dados inseridos com sucesso", Toast.LENGTH_LONG).show()
 
                     clienteNome.text.clear()
-                    clienteEmail.text.clear()
+                    clienteSobrenome.text.clear()
+                    clienteCPF.text.clear()
+                    clienteNasc.text.clear()
                     clienteEndereco.text.clear()
                     clienteCidade.text.clear()
                     clienteEstado.text.clear()
                     clienteTelefone.text.clear()
+                    clienteEmail.text.clear()
 
 
                 }.addOnFailureListener { err ->

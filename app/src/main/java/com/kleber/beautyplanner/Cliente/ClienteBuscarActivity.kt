@@ -55,11 +55,15 @@ class ClienteBuscarActivity : AppCompatActivity() {
                             //put extras
                             intent.putExtra("clienteId", clienteList[position].clienteId)
                             intent.putExtra("clienteNome", clienteList[position].vclienteNome)
-                            intent.putExtra("clienteEmail", clienteList[position].vclienteEmail)
-                            intent.putExtra("clienteTelefone", clienteList[position].vclienteTelefone)
+                            intent.putExtra("clienteSobrenome", clienteList[position].vclienteSobrenome)
+                            intent.putExtra("clienteCPF", clienteList[position].vclienteCPF)
+                            intent.putExtra("clienteNasc", clienteList[position].vclienteNasc)
                             intent.putExtra("clienteEndereco", clienteList[position].vclienteEndereco)
                             intent.putExtra("clienteCidade", clienteList[position].vclienteCidade)
                             intent.putExtra("clienteEstado", clienteList[position].vclienteEstado)
+                            intent.putExtra("clienteTelefone", clienteList[position].vclienteTelefone)
+                            intent.putExtra("clienteEmail", clienteList[position].vclienteEmail)
+
                             startActivity(intent)
 
                         }

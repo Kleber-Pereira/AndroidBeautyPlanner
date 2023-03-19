@@ -14,11 +14,14 @@ import com.kleber.beautyplanner.R
 class ClienteDetailsActivity : AppCompatActivity() {
     private lateinit var tvclienteId: TextView
     private lateinit var tvclienteNome: TextView
-    private lateinit var tvclienteEmail:  TextView
-    private lateinit var tvclienteTelefone: TextView
+    private lateinit var tvclienteSobrenome: TextView
+    private lateinit var tvclienteCPF: TextView
+    private lateinit var tvclienteNasc: TextView
     private lateinit var tvclienteEndereco: TextView
     private lateinit var tvclienteCidade: TextView
     private lateinit var tvclienteEstado: TextView
+    private lateinit var tvclienteTelefone: TextView
+    private lateinit var tvclienteEmail: TextView
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
 
@@ -60,21 +63,27 @@ class ClienteDetailsActivity : AppCompatActivity() {
         mDialog.setView(mDialogView)
 
         val etclienteNome = mDialogView.findViewById<EditText>(R.id.etclienteNome)
-        val etclienteEmail = mDialogView.findViewById<EditText>(R.id.etclienteEmail)
-        val etclienteTelefone = mDialogView.findViewById<EditText>(R.id.etclienteTelefone)
+        val etclienteSobrenome = mDialogView.findViewById<EditText>(R.id.etclienteSobrenome)
+        val etclienteCPF = mDialogView.findViewById<EditText>(R.id.etclienteCPF)
+        val etclienteNasc = mDialogView.findViewById<EditText>(R.id.etclienteNasc)
         val etclienteEndereco = mDialogView.findViewById<EditText>(R.id.etclienteEndereco)
         val etclienteCidade = mDialogView.findViewById<EditText>(R.id.etclienteCidade)
         val etclienteEstado = mDialogView.findViewById<EditText>(R.id.etclienteEstado)
+        val etclienteTelefone = mDialogView.findViewById<EditText>(R.id.etclienteTelefone)
+        val etclienteEmail = mDialogView.findViewById<EditText>(R.id.etclienteEmail)
 
 
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
         etclienteNome.setText(intent.getStringExtra("clienteNome").toString())
-        etclienteEmail.setText(intent.getStringExtra("clienteEmail").toString())
-        etclienteTelefone.setText(intent.getStringExtra("clienteTelefone").toString())
+        etclienteSobrenome.setText(intent.getStringExtra("clienteSobrenome").toString())
+        etclienteCPF.setText(intent.getStringExtra("clienteCPF").toString())
+        etclienteNasc.setText(intent.getStringExtra("clienteNasc").toString())
         etclienteEndereco.setText(intent.getStringExtra("clienteEndereco").toString())
         etclienteCidade.setText(intent.getStringExtra("clienteCidade").toString())
         etclienteEstado.setText(intent.getStringExtra("clienteEstado").toString())
+        etclienteTelefone.setText(intent.getStringExtra("clienteTelefone").toString())
+        etclienteEmail.setText(intent.getStringExtra("clienteEmail").toString())
 
 
         mDialog.setTitle("Atualizando $clienteNome ")
@@ -86,23 +95,31 @@ class ClienteDetailsActivity : AppCompatActivity() {
             updateClienteData(
                 clienteId,
                 etclienteNome.text.toString(),
-                etclienteEmail.text.toString(),
-                etclienteTelefone.text.toString(),
+                etclienteSobrenome.text.toString(),
+                etclienteCPF.text.toString(),
+                etclienteNasc.text.toString(),
                 etclienteEndereco.text.toString(),
                 etclienteCidade.text.toString(),
-                etclienteEstado.text.toString()
+                etclienteEstado.text.toString(),
+                etclienteEmail.text.toString(),
+                etclienteTelefone.text.toString()
 
             )
 
             Toast.makeText(applicationContext, "Dados do cliente atulizado", Toast.LENGTH_LONG).show()
 
             //we are setting updated data to our textviews
+
+
             tvclienteNome.text = etclienteNome.text.toString()
-            tvclienteEmail.text = etclienteEmail.text.toString()
-            tvclienteTelefone.text = etclienteTelefone.text.toString()
+            tvclienteSobrenome.text = etclienteSobrenome.text.toString()
+            tvclienteCPF.text = etclienteCPF.text.toString()
+            tvclienteNasc.text = etclienteNasc.text.toString()
             tvclienteEndereco.text = etclienteEndereco.text.toString()
             tvclienteCidade.text = etclienteCidade.text.toString()
             tvclienteEstado.text = etclienteEstado.text.toString()
+            tvclienteEmail.text = etclienteEmail.text.toString()
+            tvclienteTelefone.text = etclienteTelefone.text.toString()
 
             alertDialog.dismiss()
         }
@@ -111,38 +128,47 @@ class ClienteDetailsActivity : AppCompatActivity() {
     private fun updateClienteData(
         clienteId: String,
         clienteNome: String,
-        clienteEmail: String,
+        clienteSobrenome: String,
+        clienteCPF: String,
+        clienteNasc: String,
         clienteEndereco: String,
         clienteCidade: String,
         clienteEstado: String,
+        clienteEmail: String,
         clienteTelefone: String
     ) {
         val dbRef = FirebaseDatabase.getInstance().getReference("Clientes").child(clienteId)
-        val clienteInfo = ClienteModel(clienteId,clienteNome,clienteEmail,clienteEndereco,
-            clienteCidade,clienteEstado,clienteTelefone)
+        val clienteInfo = ClienteModel(clienteId,clienteNome,clienteSobrenome,  clienteCPF, clienteNasc,
+            clienteEndereco, clienteCidade,clienteEstado,clienteEmail,clienteTelefone)
         dbRef.setValue(clienteInfo)
     }
 
     private fun initView() {
         tvclienteId = findViewById(R.id.tvclienteId)
         tvclienteNome = findViewById(R.id.tvclienteNome)
-        tvclienteEmail = findViewById(R.id.tvclienteEmail)
-        tvclienteTelefone = findViewById(R.id.tvclienteTelefone)
-        tvclienteEndereco = findViewById(R.id.tvclienteEnderco)
+        tvclienteSobrenome = findViewById(R.id.tvclienteSobrenome)
+        tvclienteCPF = findViewById(R.id.tvclienteCPF)
+        tvclienteNasc = findViewById(R.id.tvclienteNasc)
+        tvclienteEndereco = findViewById(R.id.tvclienteEndereco)
         tvclienteCidade = findViewById(R.id.tvclienteCidade)
         tvclienteEstado = findViewById(R.id.tvclienteEstado)
+        tvclienteTelefone = findViewById(R.id.tvclienteTelefone)
+        tvclienteEmail = findViewById(R.id.tvclienteEmail)
         btnUpdate = findViewById(R.id.btnUpdate)
         btnDelete = findViewById(R.id.btnDelete)
     }
 
     private fun setValuesToViews() {
         tvclienteId.text = intent.getStringExtra("clienteId")
-        tvclienteNome.text = intent.getStringExtra("clienteName")
-        tvclienteEmail.text = intent.getStringExtra("clienteEmail")
-        tvclienteTelefone.text = intent.getStringExtra("clienteTelefone")
+        tvclienteNome.text = intent.getStringExtra("clienteNome")
+        tvclienteSobrenome.text = intent.getStringExtra("clienteSobrenome")
+        tvclienteCPF.text = intent.getStringExtra("clienteCPF")
+        tvclienteNasc.text = intent.getStringExtra("clienteNasc")
         tvclienteEndereco.text = intent.getStringExtra("clienteEndereco")
         tvclienteCidade.text = intent.getStringExtra("clienteCidade")
         tvclienteEstado.text = intent.getStringExtra("clienteEstado")
+        tvclienteTelefone.text = intent.getStringExtra("clienteTelefone")
+        tvclienteEmail.text = intent.getStringExtra("clienteEmail")
 
     }
     private fun deleteRecord(

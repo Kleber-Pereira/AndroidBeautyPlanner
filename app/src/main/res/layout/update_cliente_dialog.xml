@@ -14,22 +14,30 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/etclienteEmail"
+        android:id="@+id/etclienteSobrenome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="E-mail"
+        android:hint="Nome"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/etclienteTelefone"
+        android:id="@+id/etclienteCPF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Telefone"
+        android:hint="Nome"
         android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etclienteNasc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Nome"
+        android:inputType="textPersonName" />
+
+
     <EditText
         android:id="@+id/etclienteEndereco"
         android:layout_width="match_parent"
@@ -55,6 +63,24 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Estado"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etclienteTelefone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Telefone"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etclienteEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="E-mail"
         android:inputType="textPersonName" />
 
     <Button
