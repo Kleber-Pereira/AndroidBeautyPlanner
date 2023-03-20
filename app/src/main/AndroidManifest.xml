@@ -78,6 +78,38 @@
         </activity>
 
 
+        <activity
+            android:name=".Servicos.ServicosDetailsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Servicos.ServicosBuscarActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Servicos.ServicosInserirActivity"
+            android:exported="false"
+            android:label="@string/title_activity_inserir"
+            android:theme="@style/Theme.Splash.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Servicos.ServicosActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+
 
         <activity
             android:name=".MainActivity"
