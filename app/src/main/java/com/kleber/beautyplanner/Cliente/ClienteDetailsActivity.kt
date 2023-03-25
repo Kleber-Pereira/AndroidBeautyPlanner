@@ -1,5 +1,7 @@
 package com.kleber.beautyplanner.Cliente
 
+import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +12,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.database.FirebaseDatabase
 import com.kleber.beautyplanner.R
+import java.util.*
+import java.text.SimpleDateFormat
 
 class ClienteDetailsActivity : AppCompatActivity() {
     private lateinit var tvclienteId: TextView
@@ -52,6 +56,34 @@ class ClienteDetailsActivity : AppCompatActivity() {
 
     }
 
+    private fun EditText.transformIntoDatePicker(context: Context, format: String, maxDate: Date? = null) {
+        isFocusableInTouchMode = false
+        isClickable = true
+        isFocusable = false
+
+        val myCalendar = Calendar.getInstance()
+        val datePickerOnDataSetListener =
+            DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+                myCalendar.set(Calendar.YEAR, year)
+                myCalendar.set(Calendar.MONTH, monthOfYear)
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                val sdf = SimpleDateFormat(format, Locale.UK)
+                setText(sdf.format(myCalendar.time))
+            }
+
+        setOnClickListener {
+            DatePickerDialog(
+                context, datePickerOnDataSetListener, myCalendar
+                    .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)
+            ).run {
+                maxDate?.time?.also { datePicker.maxDate = it }
+                show()
+            }
+        }
+    }
+
+
     private fun openUpdateDialog(
         clienteId: String,
         clienteNome: String
@@ -71,6 +103,9 @@ class ClienteDetailsActivity : AppCompatActivity() {
         val etclienteEstado = mDialogView.findViewById<EditText>(R.id.etclienteEstado)
         val etclienteTelefone = mDialogView.findViewById<EditText>(R.id.etclienteTelefone)
         val etclienteEmail = mDialogView.findViewById<EditText>(R.id.etclienteEmail)
+
+        etclienteNasc.transformIntoDatePicker(this, "dd/MM/yyyy")
+        etclienteNasc.transformIntoDatePicker(this, "dd/MM/yyyy", Date())
 
 
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
