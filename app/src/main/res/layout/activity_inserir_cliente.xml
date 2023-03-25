@@ -52,9 +52,14 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Data de Nascimento"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clienteCPF" />
+        app:layout_constraintTop_toBottomOf="@+id/clienteCPF"
+  />
 
     <EditText
         android:id="@+id/clienteEndereco"
