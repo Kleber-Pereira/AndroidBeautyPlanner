@@ -1,16 +1,23 @@
-package com.kleber.beautyplanner.Agenda
+package com.kleber.beautyplanner.Agendas
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import androidx.annotation.NonNull
+
+import com.google.firebase.database.*
+import com.google.firebase.database.core.Context
 import com.kleber.beautyplanner.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -27,6 +34,8 @@ class AgendaFragment : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
+
         }
     }
 
@@ -35,8 +44,9 @@ class AgendaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_agenda, container, false)
+        return inflater.inflate(R.layout.fragment_agenda, container, false)
     }
+
 
     companion object {
         /**

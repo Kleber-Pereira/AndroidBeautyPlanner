@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Agenda.AgendaFragment">
+    tools:context=".Agendas.AgendaActivity">
 
     <!-- TODO: Update blank fragment layout -->
-    <com.kleber.beautyplanner.Agenda.CustomCalendarView
+    <com.kleber.beautyplanner.Agendas.CustomCalendarView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/custom_calendar_view">
 
-    </com.kleber.beautyplanner.Agenda.CustomCalendarView>
+    </com.kleber.beautyplanner.Agendas.CustomCalendarView>
 
 </FrameLayout>

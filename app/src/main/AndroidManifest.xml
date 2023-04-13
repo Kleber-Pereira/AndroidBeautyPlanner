@@ -77,6 +77,14 @@
                 android:value="" />
         </activity>
 
+        <activity
+            android:name=".Agendas.AgendaActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
 
         <activity
             android:name=".Servicos.ServicosDetailsActivity"
@@ -108,13 +116,8 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".Agenda.AgendaActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
+
 
 
         <activity
